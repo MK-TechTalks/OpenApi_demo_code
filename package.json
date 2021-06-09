@@ -1,0 +1,21 @@
+{
+  "name": "open_api_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client:generate": "openapi-generator-cli generate -i pets.yaml -g typescript-axios -o client/",
+    "goclient:generate": "openapi-generator-cli generate -i pets.yaml -g go -o go-client/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "openapi-backend": "^3.9.2"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.1.26"
+  }
+}

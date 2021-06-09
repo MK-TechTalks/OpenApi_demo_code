@@ -1,0 +1,62 @@
+openapi: 3.0.1
+info:
+  title: 'Pets API'
+  version: 1.0.0
+paths:
+  '/pets':
+    get:
+      operationId: getPets
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetsList'
+          description: List of pets
+  '/pets/{id}':
+    get:
+      operationId: getPetById
+      responses:
+        '200':
+          description: Details of a pet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetsList'
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+components:
+  schemas:
+    Pet:
+      title: Type definition for a pet
+      description: A pet is your cute friend
+      required:
+        - id
+      type: object
+      properties:
+        name:
+          description: Name of the pet.
+          type: string
+        id:
+          description: Uniquie id for the pet
+          type: string
+        age:
+          description: how old is the animal
+          type: string
+    PetsList:
+      title: Response of list of pets
+      description: List of pets in database
+      required:
+        - pets
+        - count
+      type: object
+      properties:
+        pets:
+          description: List of pets
+          type: array
+          items:
+            $ref: '#/components/schemas/Pet'
